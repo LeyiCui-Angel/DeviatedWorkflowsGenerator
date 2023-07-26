@@ -5,17 +5,26 @@
     <title>Title</title>
 </head>
 <body>
+<h2>Input:</h2>
 <form method="POST">
     <label for="workflow">Enter the initial workflow:</label><br>
-    <input type="text" id="workflow" name="workflow"><br>
+    <input type="text" id="workflow" name="workflow" value="{{ data.workflow }}"><br>
     <label for="error_type">Choose an error type (omission/repetition/permutation):</label><br>
-    <input type="text" id="error_type" name="error_type"><br>
+    <select name="error_type" id="error_type">
+        <option value=""></option>
+        <option value="omission" {% if data.error_type == 'omission' %}selected{% endif %}>Omission</option>
+        <option value="repetition" {% if data.error_type == 'repetition' %}selected{% endif %}>Repetition</option>
+        <option value="permutation" {% if data.error_type == 'permutation' %}selected{% endif %}>Permutation</option>
+    </select><br>
     <label for="level">Choose the level of erroneous actions generated:</label><br>
-    <input type="number" id="level" name="level">
-    <input type="submit" value="Submit">
+    <input type="number" id="level" name="level" value="{{ data.level }}"><br><br>
+    <input type="submit" value="Submit"><br><br>
 </form>
 
-<a href="/download">Download the output</a>
+<h2>Output:</h2>
+<h3>Scroll to see full output.</h3>
+<textarea rows="30" cols="100">{{ output }}</textarea>
 
 </body>
 </html>
+

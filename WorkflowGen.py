@@ -80,3 +80,13 @@ elif errType=="permutation":
     print(r)
 else:
     print("Please make sure that you entered a correct error type.")
+
+def run_workflow(iniWorkflow, errType, level):
+    if errType == "omission":
+        return omission(iniWorkflow, level)
+    elif errType == "repetition":
+        return repetition(iniWorkflow, level)
+    elif errType == "permutation":
+        return permutation(iniWorkflow, level)
+    else:
+        return "Please make sure that you entered a correct error type."

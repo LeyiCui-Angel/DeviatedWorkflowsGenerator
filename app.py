@@ -1,28 +1,37 @@
-from flask import Flask, render_template, request, send_file
-import itertools
-from itertools import combinations
+from flask import Flask, request, render_template
+from werkzeug.utils import secure_filename
+from WorkflowGen import *
 
 app = Flask(__name__)
 
 @app.route('/', methods=['GET', 'POST'])
-def index():
+def home():
+    output = None
+    data = {
+        'workflow': '',
+        'error_type': '',
+        'level': ''
+    }
+
     if request.method == 'POST':
-        # Your code here, use request.form to access POST data
-        iniWorkflow = request.form.get('workflow').split(';')
-        errType = request.form.get('error_type').lower()
+        workflow = request.form.get('workflow')
+        error_type = request.form.get('error_type')
         level = int(request.form.get('level'))
-        # rest of your code...
-        # Write the result to a .txt file
-        with open('output.txt', 'w') as f:
-            for item in r:
-                f.write("%s\n" % item)
-        return render_template('index.html')
 
-    return render_template('index.html')
+        data = {
+            'workflow': workflow,
+            'error_type': error_type,
+            'level': level
+        }
 
-@app.route('/download')
-def download():
-    return send_file('output.txt', as_attachment=True)
+        if error_type == "omission":
+            output = omission(workflow.split(';'), level)
+        elif error_type == "repetition":
+            output = repetition(workflow.split(';'), level)
+        elif error_type == "permutation":
+            output = permutation(workflow.split(';'), level)
 
-if __name__ == "__main__":
+    return render_template('index.html', output="\n".join([str(elem) for elem in output]) if output else None, data=data)
+
+if __name__ == '__main__':
     app.run(debug=True)
