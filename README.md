@@ -6,23 +6,21 @@
 <h2>Input format</h2>
 
 <h3>Enter the initial workflow</h3>
-Enter the initial workflow that needs to be deviated. Use ; to separate each action.
+Enter the initial workflow that needs to be deviated. Use ; to separate each action.<br><br>
 
-Example:
 
-Click on A;Enter prescription;Save
+Example:<br>
+Click on A;Enter prescription;Save<br>
 
 <h3>Choose an error type</h3>
-Choose from omission, repetition, or permutation.
+Choose from omission, repetition, or permutation.<br><br>
 
-Omission: [level] amount of action(s) are omitted.
-
-Repetition: [level] amount of action(s) are repeated.
-
+Omission: [level] amount of action(s) are omitted.<br>
+Repetition: [level] amount of action(s) are repeated.<br>
 Permutation: [level+1] amount of action(s) are swapping positions.
 
 <h3>Choose the level of erroneous actions generated</h3>
-Enter how many erroneous phenotypes of human action to generate.
+Enter how many erroneous phenotypes of human action to generate.<br>
 
 Enter 0 to not include any.
 
