@@ -2,10 +2,6 @@
 
 <p align="center"><a href="https://deviatedworkflows-generator-4b34d2ce79de.herokuapp.com/">Click to access online Deviated Workflows Generator
 <hr>
-  
-## The interface
-
-<img src="DWGinterface.jpeg" width="50%" height="50%">
 
 ## Input format
 
@@ -32,3 +28,7 @@ Enter 0 to not include any.
 
 ## Generate deviated workflows
 Click on <Submit> and the output will be displayed in the text box.
+
+## The interface
+
+<img src="DWGinterface.jpeg" width="70%" height="70%">
