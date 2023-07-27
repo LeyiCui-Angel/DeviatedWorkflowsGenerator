@@ -69,6 +69,8 @@ def permutation(actions, level):
 
     return permutations
 
+'''
+# To run locally in terminal
 if errType=="omission":
     r = omission(iniWorkflow, level)
     print(r)
@@ -80,6 +82,7 @@ elif errType=="permutation":
     print(r)
 else:
     print("Please make sure that you entered a correct error type.")
+'''
 
 def run_workflow(iniWorkflow, errType, level):
     if errType == "omission":
