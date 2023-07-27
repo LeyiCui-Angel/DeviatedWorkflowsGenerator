@@ -1,18 +1,18 @@
-# DeviatedWorkflowsGenerator
+<h1>DeviatedWorkflowsGenerator</h1>
 
 <p align="center"><a href="https://deviatedworkflows-generator-4b34d2ce79de.herokuapp.com/">Click to access online Deviated Workflows Generator
 <hr>
 
-## Input format
+<h2>Input format</h2>
 
-### Enter the initial workflow
+<h3>Enter the initial workflow</h3>
 Enter the initial workflow that needs to be deviated. Use ; to separate each action.
 
 Example:
 
 Click on A;Enter prescription;Save
 
-### Choose an error type
+<h3>Choose an error type</h3>
 Choose from omission, repetition, or permutation.
 
 Omission: [level] amount of action(s) are omitted.
@@ -21,14 +21,14 @@ Repetition: [level] amount of action(s) are repeated.
 
 Permutation: [level+1] amount of action(s) are swapping positions.
 
-### Choose the level of erroneous actions generated
+<h3>Choose the level of erroneous actions generated</h3>
 Enter how many erroneous phenotypes of human action to generate.
 
 Enter 0 to not include any.
 
-## Generate deviated workflows
+<h2>Generate deviated workflows</h2>
 Click on <Submit> and the output will be displayed in the text box.
 
-## The interface
+<h2>The interface</h2>
 
 <img src="DWGinterface.jpeg" width="70%" height="70%">
