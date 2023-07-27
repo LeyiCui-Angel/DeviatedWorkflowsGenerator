@@ -18,7 +18,7 @@ level = int(input("Choose the level of erroneous actions generated: "))
 def omission(actions, level):
     if level == 0:
         return [actions]
-
+    workflowSet = {tuple(actions)} # set for checking duplicates
     omissions = []
     numActions = len(actions)
 
@@ -26,7 +26,10 @@ def omission(actions, level):
         omittedCombo = combinations(range(numActions), i)
         for omitted in omittedCombo:
             deviatedWorkflow = [actions[j] for j in range(numActions) if j not in omitted]
-            omissions.append(deviatedWorkflow)
+            deviatedWorkflowTuple = tuple(deviatedWorkflow)
+            if deviatedWorkflowTuple not in workflowSet:
+                omissions.append(deviatedWorkflow)
+                workflowSet.add(deviatedWorkflowTuple)
 
     return omissions
 
