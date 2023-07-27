@@ -1,6 +1,8 @@
 import itertools
 from itertools import combinations,combinations_with_replacement
 
+'''
+# To run locally in terminal
 # input: initial workflow
 # input format: select patient A; click <A>; Click <B>; choose Starting Date; click <Save>
 iniWorkflow = input("Enter the initial workflow: ").split(";")
@@ -10,6 +12,7 @@ errType = input("Choose an error type (omission/repetition/permutation): ").lowe
 # input: level of erroneous actions generated
 # select 0 to not include any
 level = int(input("Choose the level of erroneous actions generated: "))
+'''
 
 # omission
 def omission(actions, level):
