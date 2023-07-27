@@ -25,7 +25,7 @@ Enter how many erroneous phenotypes of human action to generate.<br>
 Enter 0 to not include any.
 
 <h2>Generate deviated workflows</h2>
-Click on <Submit> and the output will be displayed in the text box.
+Click on "Submit" and the output will be displayed in the text box.
 
 <h2>The interface</h2>
 
