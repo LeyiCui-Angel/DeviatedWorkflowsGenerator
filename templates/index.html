@@ -23,7 +23,15 @@
 
 <h2>Output:</h2>
 <h3>Scroll to see full output.</h3>
-<textarea rows="30" cols="100">{{ output }}</textarea>
+<textarea rows="30" cols="100">{{ output }}</textarea><br><br>
+
+{% if output %}
+<form id="download_form" method="POST" action="{{ url_for('download_output') }}">
+    <input type="hidden" name="output" value="{{ output }}">
+    <input type="submit" value="Download Output">
+</form>
+{% endif %}
+
 
 </body>
 </html>
