@@ -1,4 +1,4 @@
-from flask import Flask, request, render_template, send_file, Response
+from flask import Flask, request, render_template, send_file, Response, make_response
 from werkzeug.utils import secure_filename
 from WorkflowGen import *
 from io import BytesIO
@@ -43,7 +43,10 @@ def download_output():
         bytes_io.write(output.encode('utf-8'))
         bytes_io.seek(0)
 
-        return send_file(bytes_io, mimetype="text/plain", as_attachment=True, attachment_filename="output.txt")
+        response = make_response(bytes_io.getvalue())
+        response.headers.set('Content-Type', 'text/plain')
+        response.headers.set('Content-Disposition', 'attachment', filename='output.txt')
+        return response
 
     return Response("No output found.", status=404)
 
