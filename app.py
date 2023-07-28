@@ -50,5 +50,11 @@ def download_output():
 
     return Response("No output found.", status=404)
 
+@app.route('/run_workflow', methods=['GET', 'POST'])
+def run_workflow():
+    # Your implementation
+    return render_template('run_workflow.html')
+
+
 if __name__ == '__main__':
     app.run(debug=True)

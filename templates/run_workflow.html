@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Run Workflow</title>
+  <style>
+    #actions {
+      width: 600px;
+      height: 100px;
+    }
+  </style>
+  <script>
+    window.onload = function() {
+      // Check if there is any stored text
+      if (localStorage.getItem('actions')) {
+        document.getElementById('actions').value = localStorage.getItem('actions');
+      }
+    }
+
+    function storeText() {
+      // Store the text in local storage
+      localStorage.setItem('actions', document.getElementById('actions').value);
+    }
+  </script>
+</head>
+<body>
+<form method="POST" onsubmit="storeText()">
+  <br><label for="actions">Enter workflow (A list separated by commas):</label><br><br>
+  <textarea id="actions" name="actions"></textarea><br><br>
+  <input type="submit" value="Run">
+</form>
+</body>
+</html>

@@ -29,10 +29,9 @@
 <form id="download_form" method="POST" action="{{ url_for('download_output') }}">
     <input type="hidden" name="output" value="{{ output }}">
     <input type="submit" value="Download Output">
+    <a href="{{ url_for('run_workflow') }}" target="_blank"><button type="button">Run Workflow</button></a>
 </form>
 {% endif %}
-
-
 </body>
 </html>
 
