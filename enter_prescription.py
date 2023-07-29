@@ -5,11 +5,19 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import Select
 from selenium.webdriver.common.action_chains import ActionChains
+from selenium.webdriver.chrome.options import Options
+import os
 
 class OpenEMRWorkflow:
     def __init__(self):
-        # Open Firefox browser
-        self.driver = webdriver.Firefox()
+        # Set up Chrome options
+        options = Options()
+        options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
+        options.add_argument("--disable-gpu")
+        options.add_argument("--no-sandbox")
+        options.add_argument("--headless")
+        # Open Chrome browser
+        self.driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"), chrome_options=options)
         self.wait = WebDriverWait(self.driver, 10)
         # Initialize the flag as False
         self.provider_selected = False
