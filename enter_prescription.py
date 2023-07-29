@@ -6,6 +6,44 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import Select
 from selenium.webdriver.common.action_chains import ActionChains
+from webdriver_manager.chrome import ChromeDriverManager
+
+class OpenEMRWorkflow:
+    def __init__(self):
+        # Set up Chrome options
+        options = webdriver.ChromeOptions()
+
+        # Enable headless mode
+        options.add_argument("--headless")
+
+        # Disable GPU acceleration
+        options.add_argument("--disable-gpu")
+
+        # Allow running without a sandbox (required when running as root, which should otherwise be avoided)
+        options.add_argument("--no-sandbox")
+
+        # Open Chrome browser
+        self.driver = webdriver.Chrome(
+            executable_path=ChromeDriverManager().install(),
+            options=options
+        )
+
+        self.wait = WebDriverWait(self.driver, 10)
+        # Initialize the flag as False
+        self.provider_selected = False
+        self.drug_selected = False
+        self.namep1_entered = False
+        self.quantity_selected = False
+
+# Problems with working with Firefox on Heroku
+'''import os
+from selenium import webdriver
+from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import Select
+from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.firefox.service import Service
 from selenium.webdriver.firefox.options import Options
 
@@ -36,7 +74,7 @@ class OpenEMRWorkflow:
         self.provider_selected = False
         self.drug_selected = False
         self.namep1_entered = False
-        self.quantity_selected = False
+        self.quantity_selected = False'''
 
     def open_site(self):
         # Open openEMR demo
