@@ -43,6 +43,7 @@ class OpenEMRWorkflow:
         self.wait.until(EC.presence_of_element_located((By.ID, 'authUser'))).send_keys('physician')
         self.wait.until(EC.presence_of_element_located((By.ID, 'clearPass'))).send_keys('physician')
         self.wait.until(EC.presence_of_element_located((By.ID, 'login-button'))).click()
+        print(self.driver.title)
 
     def click_finder(self):
         # Click on [Finder]
