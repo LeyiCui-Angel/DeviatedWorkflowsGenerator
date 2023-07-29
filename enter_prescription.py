@@ -6,30 +6,30 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import Select
-from selenium.webdriver.common.action_chains import ActionChains
-from selenium.webdriver.firefox.options import FirefoxOptions
-from selenium.webdriver.chrome.service import Service
-from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.common.action_chains import Action_chains
 
 class OpenEMRWorkflow:
     def __init__(self):
         # Set up Firefox options
-        options = FirefoxOptions()
+        options = webdriver.FirefoxOptions()
 
         # enable trace level for debugging
         options.log.level = "trace"
 
         options.add_argument("-remote-debugging-port=9224")
-        options.add_argument("--headless")
-        options.add_argument("--disable-gpu")
-        options.add_argument("--no-sandbox")
+        options.add_argument("-headless")
+        options.add_argument("-disable-gpu")
+        options.add_argument("-no-sandbox")
 
-        binary = FirefoxBinary(os.environ.get("FIREFOX_BIN"))
+        binary = FirefoxBinary(os.environ.get('FIREFOX_BIN'))
 
         # Open Firefox browser
-        self.driver = webdriver.Firefox(firefox_binary=binary, executable_path=os.environ.get("GECKODRIVER_PATH"), options=options)
-        self.wait = WebDriverWait(self.driver, 10)
+        self.driver = webdriver.Firefox(
+            firefox_binary=binary,
+            executable_path=os.environ.get('GECKODRIVER_PATH'),
+            options=options)
 
+        self.wait = WebDriverWait(self.driver, 10)
         # Initialize the flag as False
         self.provider_selected = False
         self.drug_selected = False
