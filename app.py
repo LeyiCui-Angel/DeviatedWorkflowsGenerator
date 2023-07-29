@@ -2,6 +2,8 @@ from flask import Flask, request, render_template, send_file, Response, make_res
 from werkzeug.utils import secure_filename
 from WorkflowGen import *
 from io import BytesIO
+from enter_prescription import OpenEMRWorkflow
+import ast
 
 app = Flask(__name__)
 
@@ -52,8 +54,25 @@ def download_output():
 
 @app.route('/run_workflow', methods=['GET', 'POST'])
 def run_workflow():
-    # Your implementation
-    return render_template('run_workflow.html')
+    message = None
+    if request.method == 'POST':
+        # Process the form data
+        try:
+            actions = request.form.get('actions')
+            action_list = ast.literal_eval(actions)
+            workflow = OpenEMRWorkflow()
+            workflow.run_setup()
+            for action in action_list:
+                action = action.strip()
+                if hasattr(workflow, action):
+                    getattr(workflow, action)()
+                else:
+                    print(f"No such method: {action}")
+            message = "Workflow ran successfully."
+        except Exception as e:
+            message = f"Error occurred: {str(e)}"
+    # Render the template (whether it's a GET or POST request)
+    return render_template('run_workflow.html', message=message)
 
 
 if __name__ == '__main__':

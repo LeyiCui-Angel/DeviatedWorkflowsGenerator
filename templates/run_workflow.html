@@ -13,6 +13,8 @@
       // Check if there is any stored text
       if (localStorage.getItem('actions')) {
         document.getElementById('actions').value = localStorage.getItem('actions');
+        // Clear the stored text
+        localStorage.removeItem('actions');
       }
     }
 
@@ -21,12 +23,31 @@
       localStorage.setItem('actions', document.getElementById('actions').value);
     }
   </script>
+  <script>
+    function copyToClipboard() {
+      /* Get the text field */
+      var copyText = document.getElementById("correct-workflow").value;
+
+      /* Copy the text inside the text field */
+      navigator.clipboard.writeText(copyText).then(function() {
+        /* No Alert */
+      }, function(err) {
+        console.error('Could not copy text: ', err);
+      });
+    }
+  </script>
 </head>
 <body>
-<form method="POST" onsubmit="storeText()">
-  <br><label for="actions">Enter workflow (A list separated by commas):</label><br><br>
+<form method="POST" action="/run_workflow" onsubmit="storeText()">
+  <br><h2><label for="actions">Enter workflow (A list separated by commas):</label></h2><br>
+  <input type="hidden" value="['click_provider','select_billy','click_drug','enter_drug_namep1','enter_drug_namep2','click_quantity','enter_quantity','enter_medicine_num','choose_medicine_unit','enter_direction_num','choose_direction_s1','choose_direction_s2','choose_direction_s3','choose_refill_num1','add_to_medicine','save']" id="correct-workflow">
+  <button type="button" onclick="copyToClipboard()">Enter Prescriptions: Copy Correct Workflow</button>
+  <br><br>
   <textarea id="actions" name="actions"></textarea><br><br>
   <input type="submit" value="Run">
 </form>
+{% if message %}
+<p>{{ message }}</p>
+{% endif %}
 </body>
 </html>

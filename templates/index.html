@@ -3,10 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <title>Deviated Workflows Generator</title>
+    <script>
+        function copyToClipboard() {
+            /* Get the text field */
+            var copyText = document.getElementById("example-input").value;
+
+            /* Copy the text inside the text field */
+            navigator.clipboard.writeText(copyText).then(function() {
+                /* Alert the copied text */
+                /*alert('Example input copied to clipboard');*/
+            }, function(err) {
+                console.error('Could not copy text: ', err);
+            });
+        }
+    </script>
 </head>
 <body>
 <h2>Input:</h2>
 <form method="POST">
+    <input type="hidden" value="click_provider;select_billy;click_drug;enter_drug_namep1;enter_drug_namep2;click_quantity;enter_quantity;enter_medicine_num;choose_medicine_unit;enter_direction_num;choose_direction_s1;choose_direction_s2;choose_direction_s3;choose_refill_num1;add_to_medicine;save" id="example-input">
+    <button type="button" onclick="copyToClipboard()">Enter Prescriptions: Copy Example Input</button><br><br>
     <label for="workflow">Enter the initial workflow:</label><br>
     <input type="text" id="workflow" name="workflow" value="{{ data.workflow }}"><br>
     <label for="error_type">Choose an error type (omission/repetition/permutation):</label><br>
@@ -34,4 +50,5 @@
 {% endif %}
 </body>
 </html>
+
 

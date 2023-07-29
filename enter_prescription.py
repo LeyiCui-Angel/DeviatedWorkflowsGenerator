@@ -233,13 +233,21 @@ class OpenEMRWorkflow:
         self.click_add_prescription()
 
     def run_workflow(self, workflow):
+        workflow = OpenEMRWorkflow()
+        workflow.run_setup()
         # Call deviated workflows
-        for step in workflow:
-            # use getattr to get the method from string, call the method
-            getattr(self, step)()
+        for action in workflow:
+            # Remove any leading/trailing whitespace
+            action = action.strip()
+            # Check if the method exists
+            if hasattr(self, action):
+                # If it does, call it
+                getattr(self, action)()  # note: add () to call the function
+            else:
+                print(f"No such method: {action}")
 
-workflow = OpenEMRWorkflow()
-workflow.run_setup()
+#workflow = OpenEMRWorkflow()
+#workflow.run_setup()
 # correct workflow:
 # 16 actions
 # click_provider;select_billy;click_drug;enter_drug_namep1;enter_drug_namep2;click_quantity;enter_quantity;enter_medicine_num;choose_medicine_unit;enter_direction_num;choose_direction_s1;choose_direction_s2;choose_direction_s3;choose_refill_num1;add_to_medicine;save
