@@ -14,7 +14,7 @@ class OpenEMRWorkflow:
         options = webdriver.ChromeOptions()
 
         # Enable headless mode
-        options.add_argument("--headless")
+        #options.add_argument("--headless")
 
         # Disable GPU acceleration
         options.add_argument("--disable-gpu")
@@ -23,12 +23,9 @@ class OpenEMRWorkflow:
         options.add_argument("--no-sandbox")
 
         # Open Chrome browser
-        self.driver = webdriver.Chrome(
-            executable_path=ChromeDriverManager().install(),
-            options=options
-        )
+        self.driver = webdriver.Chrome(options=options)
 
-        self.wait = WebDriverWait(self.driver, 10)
+        self.wait = WebDriverWait(self.driver, 20)
         # Initialize the flag as False
         self.provider_selected = False
         self.drug_selected = False
@@ -38,6 +35,8 @@ class OpenEMRWorkflow:
     def open_site(self):
         # Open openEMR demo
         self.driver.get('https://demo.openemr.io/a/openemr/interface/login/login.php?site=default')
+        print(self.driver.title)
+
 
     def login(self):
         # Login
