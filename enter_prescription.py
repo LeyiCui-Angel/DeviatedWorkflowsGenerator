@@ -35,47 +35,6 @@ class OpenEMRWorkflow:
         self.namep1_entered = False
         self.quantity_selected = False
 
-# Problems with working with Firefox on Heroku
-'''import os
-from selenium import webdriver
-from selenium.webdriver.common.keys import Keys
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
-from selenium.webdriver.common.by import By
-from selenium.webdriver.support.ui import Select
-from selenium.webdriver.common.action_chains import ActionChains
-from selenium.webdriver.firefox.service import Service
-from selenium.webdriver.firefox.options import Options
-
-class OpenEMRWorkflow:
-    def __init__(self):
-        # Set up Firefox options
-        options = Options()
-
-        # Enable trace level for debugging
-        options.log.level = "trace"
-
-        options.add_argument("-remote-debugging-port=9224")
-        options.add_argument("-headless")
-        options.add_argument("-disable-gpu")
-        options.add_argument("-no-sandbox")
-
-        # Specify the binary location directly in options
-        options.binary_location = os.environ.get('FIREFOX_BIN')
-
-        firefox_service = Service(executable_path=os.environ.get('GECKODRIVER_PATH'))
-
-        # Open Firefox browser
-        self.driver = webdriver.Firefox(service=firefox_service, options=options)
-
-        self.wait = WebDriverWait(self.driver, 10)
-
-        # Initialize the flag as False
-        self.provider_selected = False
-        self.drug_selected = False
-        self.namep1_entered = False
-        self.quantity_selected = False'''
-
     def open_site(self):
         # Open openEMR demo
         self.driver.get('https://demo.openemr.io/a/openemr/interface/login/login.php?site=default')
