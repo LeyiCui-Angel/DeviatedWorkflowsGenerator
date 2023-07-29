@@ -25,7 +25,7 @@ class OpenEMRWorkflow:
         # Open Chrome browser
         self.driver = webdriver.Chrome(options=options)
 
-        self.wait = WebDriverWait(self.driver, 20)
+        self.wait = WebDriverWait(self.driver, 30)
         # Initialize the flag as False
         self.provider_selected = False
         self.drug_selected = False
