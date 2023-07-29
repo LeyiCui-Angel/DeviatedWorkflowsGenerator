@@ -1,4 +1,5 @@
 from selenium import webdriver
+from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
@@ -17,7 +18,7 @@ class OpenEMRWorkflow:
         options.add_argument("--no-sandbox")
         options.add_argument("--headless")
         # Open Chrome browser
-        self.driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"), chrome_options=options)
+        self.driver = webdriver.Chrome(service=Service(os.environ.get("CHROMEDRIVER_PATH")), options=options)
         self.wait = WebDriverWait(self.driver, 10)
         # Initialize the flag as False
         self.provider_selected = False
