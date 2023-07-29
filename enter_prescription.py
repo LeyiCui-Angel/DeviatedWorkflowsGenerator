@@ -11,14 +11,14 @@ import os
 
 class OpenEMRWorkflow:
     def __init__(self):
-        # Set up Chrome options
+        # Set up Firefox options
         options = Options()
-        options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
+        options.binary_location = os.environ.get("FIREFOX_BIN")
         options.add_argument("--disable-gpu")
         options.add_argument("--no-sandbox")
         options.add_argument("--headless")
-        # Open Chrome browser
-        self.driver = webdriver.Chrome(service=Service(os.environ.get("CHROMEDRIVER_PATH")), options=options)
+        # Open Firefox browser
+        self.driver = webdriver.Firefox(executable_path=os.environ.get("GECKODRIVER_PATH"), firefox_options=options)
         self.wait = WebDriverWait(self.driver, 10)
         # Initialize the flag as False
         self.provider_selected = False
