@@ -56,22 +56,27 @@ def download_output():
 def run_workflow():
     message = None
     if request.method == 'POST':
-        # Process the form data
         try:
             actions = request.form.get('actions')
             action_list = ast.literal_eval(actions)
             workflow = OpenEMRWorkflow()
+
+            # First, check if all actions are valid
+            for action in action_list:
+                action = action.strip()
+                if not hasattr(workflow, action):
+                    message = f"No such method: {action}. Please check again."
+                    return render_template('run_workflow.html', message=message)
+
+            # If all actions are valid, run the setup and actions
             workflow.run_setup()
             for action in action_list:
                 action = action.strip()
-                if hasattr(workflow, action):
-                    getattr(workflow, action)()
-                else:
-                    print(f"No such method: {action}")
+                getattr(workflow, action)()
+
             message = "Workflow ran successfully."
         except Exception as e:
             message = f"Error occurred: {str(e)}"
-    # Render the template (whether it's a GET or POST request)
     return render_template('run_workflow.html', message=message)
 
 

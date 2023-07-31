@@ -250,19 +250,20 @@ class OpenEMRWorkflow:
         self.click_prescription_page()
         self.click_add_prescription()
 
-    def run_workflow(self, workflow):
+    def run_workflow(self, workflow_actions):
         workflow = OpenEMRWorkflow()
-        workflow.run_setup()
-        # Call deviated workflows
-        for action in workflow:
-            # Remove any leading/trailing whitespace
+        # Check if all actions are valid before running setup and actions
+        for action in workflow_actions:
             action = action.strip()
-            # Check if the method exists
-            if hasattr(self, action):
-                # If it does, call it
-                getattr(self, action)()  # note: add () to call the function
-            else:
-                print(f"No such method: {action}")
+            if not hasattr(workflow, action):
+                print(f"Invalid input: {action}. Please check again.")
+                return  # return early and do not continue with the workflow
+        # If all actions are valid, run the setup and actions
+        workflow.run_setup()
+        for action in workflow_actions:
+            action = action.strip()
+            getattr(workflow, action)()
+        print("Workflow ran successfully.")
 
 #workflow = OpenEMRWorkflow()
 #workflow.run_setup()
