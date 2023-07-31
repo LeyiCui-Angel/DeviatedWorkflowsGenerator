@@ -48,9 +48,9 @@ Correct enter prescriptions format:<br>
 
 <h1>The interface</h1>
 
-<h3>Before "Submit"<\h3>
-<img src="DWGinterface.jpeg" width="70%" height="70%"><br>
-<h3>After "Submit"</h3>
-<img src="DWGinterface2.jpeg" width="70%" height="70%"><br>
-<h3>Run Workflow</h3>
+Before "Submit"<br>
+<img src="DWGinterface.jpeg" width="70%" height="70%"><br><br>
+After "Submit"<br>
+<img src="DWGinterface2.jpeg" width="70%" height="70%"><br><br>
+Run Workflow<br>
 <img src="runWorkflow.jpeg" width="70%" height="70%">
